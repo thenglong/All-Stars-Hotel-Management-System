@@ -48,7 +48,7 @@ namespace All_Stars_Hotel.FORM
         {
             var username = textBoxUsername.Text.Trim();
             var pwd = textBoxPassword.Text.Trim();
-            if (username == String.Empty || pwd == String.Empty)
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(pwd))
             {
                 MessageBox.Show("Please fill out all fields.", "Required field", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -76,6 +76,7 @@ namespace All_Stars_Hotel.FORM
                         formDashboard.Show();
                         //textBoxUsername.Clear();
                         textBoxPassword.Clear();
+                        conn.Close();
                     }
                     else MessageBox.Show("Invalid Username or Password", "Username or Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

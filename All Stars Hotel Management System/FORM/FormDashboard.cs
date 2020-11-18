@@ -58,9 +58,8 @@ namespace All_Stars_Hotel.FORM
 
         private void buttonSettings_Click(object sender, EventArgs e)
         {
-            //MoveSlidePanel(buttonSettings);
             FormSettings formSettings = new FormSettings();
-            formSettings.Show();
+            formSettings.ShowDialog();
         }
 
         private void FormDashboard_FormClosing(object sender, FormClosingEventArgs e)
