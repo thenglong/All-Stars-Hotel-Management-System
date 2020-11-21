@@ -12,10 +12,12 @@ namespace All_Stars_Hotel.FORM
 {
     public partial class FormDashboard : Form
     {
+        private Form FormLogin;
         public string Username;
-        public FormDashboard()
+        public FormDashboard(Form FormLogin)
         {
             InitializeComponent();
+            this.FormLogin = FormLogin;
             if (Username is null) Username = "Unknown User";
         }
 
@@ -32,7 +34,7 @@ namespace All_Stars_Hotel.FORM
 
         private void FormDashboard_Load(object sender, EventArgs e)
         {
-            timer1.Start();
+            timerDashboard.Start();
             labelUserName.Text = Username;
         }
 
@@ -62,21 +64,38 @@ namespace All_Stars_Hotel.FORM
             formSettings.ShowDialog();
         }
 
+        /// <summary>
+        /// Handle Form Closing Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormDashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No) e.Cancel = true;
+            else FormLogin.Show();
         }
 
+
+        /// <summary>
+        /// Shortcut Key for Setting
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormDashboard_KeyDown(object sender, KeyEventArgs e)
         {
             // set the Form KeyPreview property to true first then do this
             if (e.Control && e.KeyCode == Keys.K) buttonSettings.PerformClick();
         }
 
+        /// <summary>
+        /// Exit Dashboard Form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void labelLogout_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
+            timerDashboard.Stop();
             this.Close();
         }
     }

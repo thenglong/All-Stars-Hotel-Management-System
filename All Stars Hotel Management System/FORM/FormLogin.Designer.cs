@@ -275,6 +275,7 @@ namespace All_Stars_Hotel.FORM
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "All Stars Hotel | Login";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormLogin_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHidePWD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowPWD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMinimize)).EndInit();

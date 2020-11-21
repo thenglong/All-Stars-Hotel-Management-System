@@ -55,10 +55,12 @@ namespace All_Stars_Hotel.FORM
 
             else
             {
-                var cmdText = $"SELECT username, password FROM user WHERE username = '{username}' and password = '{pwd}'";
+                var cmdText = "SELECT username, password FROM user WHERE username = @username and password = @pwd";
                 // MySql Connection
                 MySqlConnection conn = new MySqlConnection(connString);
                 MySqlCommand cmd = new MySqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@pwd", pwd);
                 MySqlDataReader dataReader;
                 try
                 {
@@ -71,12 +73,12 @@ namespace All_Stars_Hotel.FORM
                     // if user exist
                     if (dataReader.Read())
                     {
-                        FormDashboard formDashboard = new FormDashboard();
+                        FormDashboard formDashboard = new FormDashboard(this);
                         formDashboard.Username = username;
                         formDashboard.Show();
-                        //textBoxUsername.Clear();
                         textBoxPassword.Clear();
                         conn.Close();
+                        this.Hide();
                     }
                     else MessageBox.Show("Invalid Username or Password", "Username or Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -94,6 +96,15 @@ namespace All_Stars_Hotel.FORM
                 // set the Form KeyPreview property to true first then do this and say goodbye to the beep sound
                 e.Handled = true;
                 buttonLogin.PerformClick();
+            }
+        }
+
+        private void FormLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Control && e.KeyCode == Keys.K)
+            {
+                var frmSetting = new FormSettings();
+                frmSetting.Show();
             }
         }
     }

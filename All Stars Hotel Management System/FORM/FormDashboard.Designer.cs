@@ -51,7 +51,7 @@ namespace All_Stars_Hotel.FORM
             this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerDashboard = new System.Windows.Forms.Timer(this.components);
             this.toolTipDashboard = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -104,7 +104,7 @@ namespace All_Stars_Hotel.FORM
             this.buttonSettings.TabIndex = 0;
             this.buttonSettings.TabStop = false;
             this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTipDashboard.SetToolTip(this.buttonSettings, "Settings");
+            this.toolTipDashboard.SetToolTip(this.buttonSettings, "Settings (Ctrl+K)");
             this.buttonSettings.UseVisualStyleBackColor = true;
             this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
@@ -323,9 +323,9 @@ namespace All_Stars_Hotel.FORM
             this.panel6.Size = new System.Drawing.Size(1100, 474);
             this.panel6.TabIndex = 0;
             // 
-            // timer1
+            // timerDashboard
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerDashboard.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormDashboard
             // 
@@ -385,7 +385,7 @@ namespace All_Stars_Hotel.FORM
         private System.Windows.Forms.Button buttonClient;
         private System.Windows.Forms.Panel panelSlide;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timerDashboard;
         private System.Windows.Forms.ToolTip toolTipDashboard;
         private System.Windows.Forms.Label labelLogout;
     }
